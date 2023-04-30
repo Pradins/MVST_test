@@ -1,8 +1,15 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CodeChallengeController } from './code-challenge/code-challenge.controller';
-import { CoffeeEntity } from './code-challenge/code-challenge.entity';
-import { CodeChallengeModule } from './code-challenge/code-challenge.module';
+
+// Coffee
+import { CoffeeController } from './models/Coffee/coffee.controller';
+import { CoffeeEntity } from './models/Coffee/coffee.entity';
+import { CoffeeModule } from './models/Coffee/coffee.module';
+
+// Tea
+import { TeaController } from './models/Tea/tea.controller';
+import { TeaEntity } from './models/Tea/tea.entity';
+import { TeaModule } from './models/Tea/tea.module';
 
 @Module({
   imports: [
@@ -13,12 +20,13 @@ import { CodeChallengeModule } from './code-challenge/code-challenge.module';
       username: 'postgres',
       password: '1234',
       database: 'mvst-coffee-tea-challenge-db',
-      entities: [CoffeeEntity],
+      entities: [CoffeeEntity, TeaEntity],
       synchronize: true,
     }),
-    CodeChallengeModule,
+    CoffeeModule,
+    TeaModule,
   ],
-  controllers: [CodeChallengeController],
+  controllers: [CoffeeController, TeaController],
   providers: [],
 })
 export class AppModule {}

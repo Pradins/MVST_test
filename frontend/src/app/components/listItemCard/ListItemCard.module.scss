@@ -1,0 +1,43 @@
+.card {
+  height: 349px;
+  width: 264px;
+  display: flex;
+  flex-direction: column;
+
+  padding: 16px 8px;
+
+  border: 1px solid #E7E3D9;
+  border-radius: 8px;
+}
+
+.imageContainer {
+  width: 248px;
+  height: 248px;
+}
+
+.separator {
+  height: 1px;
+  width: 232px;
+  margin: 10px 8px 0px 8px;
+  background-color: #F1E7CD;
+}
+
+.bottomContent {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  flex-direction: row;
+  padding: 0 8px;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+
+  color: #32332E;
+}
+
+.titleContainer {
+  width: 155px;
+}

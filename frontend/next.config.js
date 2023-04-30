@@ -3,14 +3,9 @@ module.exports = {
 		return [
 			{
 				source: "/",
-				destination: "/coffee",
+				destination: "/coffees",
 				permanent: true,
 			},
 		];
-	},
-	images: {
-		loader: "imgix",
-		path: [process.env.NEXT_PUBLIC_AWS_BUCKET_PATH],
-	},
-
+	}
 };

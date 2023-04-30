@@ -6,7 +6,7 @@ import { AppModule } from './../src/app.module';
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
@@ -15,10 +15,29 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
+  it('Should get the list of Coffees', async () => {
+    const response = await request(app.getHttpServer()).get('/Coffees');
+
+    expect(response.statusCode).toEqual(200);
+    expect(response.body).toHaveLength(8);
+    response.body.forEach((element) => {
+      expect(element).toHaveProperty('id');
+      expect(element).toHaveProperty('title');
+      expect(element).toHaveProperty('image');
+      expect(element).toHaveProperty('variety');
+    });
+  });
+
+  it('Should get the list of Teas', async () => {
+    const response = await request(app.getHttpServer()).get('/Teas');
+
+    expect(response.statusCode).toEqual(200);
+    expect(response.body).toHaveLength(8);
+    response.body.forEach((element) => {
+      expect(element).toHaveProperty('id');
+      expect(element).toHaveProperty('title');
+      expect(element).toHaveProperty('image');
+      expect(element).not.toHaveProperty('variety');
+    });
   });
 });
